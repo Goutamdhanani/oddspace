@@ -425,7 +425,7 @@
     "@vscode/vsce": "^3.0.0",
     "cmd-shim": "^8.0.0",
     "esbuild": "^0.27.2",
-    "eslint": "^9.10.0",
+    "eslint": "^10.5.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "jsonc-parser": "^3.0.0",
     "jsonschema": "^1.4.0",
