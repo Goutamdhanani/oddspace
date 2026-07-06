@@ -1,0 +1,12 @@
+<svg width="560" height="560" viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="lumenara-core" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 230) rotate(90) scale(260)">
+      <stop offset="0" stop-color="#EDEFF7" />
+      <stop offset="0.35" stop-color="#8B7CFF" />
+      <stop offset="1" stop-color="#0F1428" />
+    </radialGradient>
+  </defs>
+  <circle cx="280" cy="280" r="220" fill="url(#lumenara-core)" />
+  <ellipse cx="300" cy="210" rx="110" ry="84" fill="#EDEFF7" fill-opacity="0.18" />
+  <path d="M120 264C194 278 248 232 318 250C378 264 418 316 450 334" stroke="#EDEFF7" stroke-opacity="0.2" stroke-width="16" />
+</svg>

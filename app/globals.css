@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+:root {
+  --color-void-950: #06070d;
+  --color-space-900: #0f1428;
+  --color-hairline-700: #242b47;
+  --color-text-100: #edeff7;
+  --color-text-500: #8891b0;
+  --color-flare-500: #ff8a3d;
+  --color-nebula-500: #8b7cff;
+  --color-signal-400: #38d9c9;
+  --color-flare-600: #e67630;
+  --radius-instrument: 2px;
+  --transition-orbit: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --color-void-950: var(--color-void-950);
+  --color-space-900: var(--color-space-900);
+  --color-hairline-700: var(--color-hairline-700);
+  --color-text-100: var(--color-text-100);
+  --color-text-500: var(--color-text-500);
+  --color-flare-500: var(--color-flare-500);
+  --color-nebula-500: var(--color-nebula-500);
+  --color-signal-400: var(--color-signal-400);
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+@utility shell-container {
+  width: min(1280px, calc(100% - max(48px, 10vw)));
+  margin-inline: auto;
+}
+
+@utility section-gap {
+  padding-block: 4rem;
+}
+
+@media (width >= 48rem) {
+  .section-gap {
+    padding-block: 8rem;
+  }
+}
+
+@utility text-display-xl {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(3.5rem, 7.8vw, 6rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@utility text-display-l {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(2.25rem, 4.6vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility text-body-l {
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  line-height: 1.5;
+}
+
+@utility text-body-m {
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+  line-height: 1.45;
+}
+
+@utility text-label {
+  font-size: clamp(0.6875rem, 1vw, 0.75rem);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@utility text-mono-data {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-nebula-500);
+  outline-offset: 2px;
+}
+
+@keyframes word-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes orbit-sweep {
+  from {
+    transform: rotate(-30deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    transform: rotate(330deg);
+    opacity: 0;
+  }
+}
+
+.hero-word {
+  opacity: 0;
+  animation: word-reveal 440ms var(--transition-orbit) forwards;
+  animation-delay: var(--delay);
+}
+
+.hero-fade {
+  opacity: 0;
+  animation: fade-in 300ms var(--transition-orbit) forwards;
+  animation-delay: var(--delay);
+}
+
+.orbit-sweep {
+  position: relative;
+}
+
+.orbit-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--color-nebula-500) 70%, transparent);
+  clip-path: polygon(44% 0, 56% 0, 100% 100%, 0 100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.orbit-sweep[data-active="true"]::after {
+  animation: orbit-sweep 900ms var(--transition-orbit) 1;
+}
+
+[data-reduced-motion="true"] .hero-word,
+[data-reduced-motion="true"] .hero-fade,
+[data-reduced-motion="true"] .orbit-sweep[data-active="true"]::after {
+  animation: none !important;
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-fade,
+  .orbit-sweep[data-active="true"]::after {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+a,
+button {
+  transition: color 250ms var(--transition-orbit),
+    border-color 250ms var(--transition-orbit),
+    background-color 250ms var(--transition-orbit), opacity 250ms var(--transition-orbit);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-nebula-500);
+  outline-offset: 2px;
+}
